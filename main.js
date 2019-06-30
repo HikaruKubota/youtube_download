@@ -5,17 +5,24 @@ const readline = require('readline');
 
 const BASE_PATH = 'https://www.youtube.com/watch?v=';
 
-const youtubeId = 'dk75pr6C8hU';
-
 var lines = [];
-var reader = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
+var rl = readline.createInterface({
+  input: process.stdin
 });
 
-reader.on('line', line => lines.push(line))
-reader.on('close', () => {
-  lines.forEach(value => {
-    ytdl(BASE_PATH + value).pipe(fs.createWriteStream(value + '.mp4'));
-  })
-})
+rl.on('line', line => {
+  if(line == null || line == ''){
+    return;
+  }
+  let youtube_id = getParam('v', line);
+  ytdl(BASE_PATH + youtube_id).pipe(fs.createWriteStream('download/' + youtube_id + '.mp4'));
+});
+
+function getParam(name, url){
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
