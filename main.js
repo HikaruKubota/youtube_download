@@ -14,7 +14,7 @@ rl.on('line', line => {
   if(line == null || line == ''){
     return;
   }
-  let youtube_id = getParam('v', line);
+  var youtube_id = getParam('v', line);
   ytdl(BASE_PATH + youtube_id).pipe(fs.createWriteStream('download/' + youtube_id + '.mp4'));
 });
 
