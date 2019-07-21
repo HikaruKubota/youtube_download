@@ -5,7 +5,6 @@ const readline = require('readline');
 
 const BASE_PATH = 'https://www.youtube.com/watch?v=';
 
-var lines = [];
 var rl = readline.createInterface({
   input: process.stdin
 });
@@ -15,7 +14,11 @@ rl.on('line', line => {
     return;
   }
   var youtube_id = getParam('v', line);
-  ytdl(BASE_PATH + youtube_id).pipe(fs.createWriteStream('download/' + youtube_id + '.mp4'));
+
+  ytdl.getInfo(BASE_PATH + youtube_id, function(err, info) {
+    ytdl(BASE_PATH + youtube_id).pipe(fs.createWriteStream('download/' + info.title + '.mp4'));
+  });
+
 });
 
 function getParam(name, url){
