@@ -16,7 +16,9 @@ rl.on('line', line => {
   var youtube_id = getParam('v', line);
 
   ytdl.getInfo(BASE_PATH + youtube_id, function(err, info) {
-    ytdl(BASE_PATH + youtube_id).pipe(fs.createWriteStream('download/' + info.title + '.mp4'));
+    var title = info.title;
+    console.log(info.title.replace(/ /g, ''));
+    ytdl(BASE_PATH + youtube_id).pipe(fs.createWriteStream('download/' + info.title.replace(/\//g, '／') + '.mp4'));
   });
 
 });
