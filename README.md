@@ -9,3 +9,4 @@ npm i @ffmpeg-installer/ffmpeg
 
 
 ※最高画質でダウンロードしたい場合の手順
+modeって打てばフラグが入れ替わるのでmodeを打ってください。
