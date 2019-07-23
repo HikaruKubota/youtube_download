@@ -12,7 +12,7 @@ rl.on('line', line => {
     return;
   }
   ytdl.getInfo(line, function(err, info) {
-    console.log(info.title.replace(/ /g, ''));
+    console.log(info.title.replace(/\//g, ''));
     ytdl(line).pipe(fs.createWriteStream('download/' + info.title.replace(/\//g, '／') + '.mp4'));
   });
 });
