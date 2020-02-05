@@ -1,0 +1,22 @@
+{
+  "name": "youtube_download.git",
+  "version": "1.0.0",
+  "description": "常識の範囲内で使ってください。",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sakaku193/youtube_download.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sakaku193/youtube_download/issues"
+  },
+  "homepage": "https://github.com/sakaku193/youtube_download#readme",
+  "dependencies": {
+    "ytdl-core": "^1.0.7"
+  }
+}
